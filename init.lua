@@ -778,13 +778,16 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    -- 'folke/tokyonight.nvim',
+    'shaunsingh/nord.nvim',
+
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'nord'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -877,7 +880,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -910,3 +913,31 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+local options = {
+  encoding = 'utf-8',
+  pumheight = 10, --Makes popup menu smaller
+  fileencoding = 'utf-8',
+  ruler = true, --Show cursor position all the tim
+  cmdheight = 2, --More space for displaying messages
+  mouse = 'a', --Enable mouse
+  splitbelow = true, --Horizontal splits will automatically be below
+  splitright = true, --Vertical splits will automatically be right
+  conceallevel = 0, --To see `` in markdown files
+  tabstop = 2, --Insert 2 spaces for a tab
+  shiftwidth = 2, --Change the number of space characters inserted for indentation
+  smarttab = true, --Makes tabbing smarter will realize you have 2 vs 4
+  expandtab = true, --Converts tabs to spaces
+  smartindent = true, --Makes indenting smart
+  autoindent = true, --Good auto indent
+  laststatus = 2, --Always displays the status line
+  number = true, --line numbers
+  cursorline = true, --Enable highlighting of the current line
+  background = 'dark', --tell vim what the background color looks like
+  showtabline = 2, --Always show tabs
+  clipboard = 'unnamedplus', --Copy paste between vim and everything else
+  -- termguicolors = true
+}
+
+for option, value in pairs(options) do
+  vim.opt[option] = value
+end
